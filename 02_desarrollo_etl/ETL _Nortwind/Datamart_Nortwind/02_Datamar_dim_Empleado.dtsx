@@ -1,0 +1,1264 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/29/2025 3:20:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALBERTO"
+  DTS:CreatorName="ALBERTO\alina"
+  DTS:DTSID="{FBDC0BDB-662A-4E5E-B680-3B1F6ECD875C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="02_Datamar_dim_Empleado"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{F22A1D11-A949-48B7-8FA1-F34E7E0F71EF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.datamart_Northwind]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AC4AA4E9-2F78-4461-BEC9-83E03DC48428}"
+      DTS:ObjectName="LocalHost.datamart_Northwind">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=datamart_Northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-02_Datamar_dim_Empleado-{AC4AA4E9-2F78-4461-BEC9-83E03DC48428}LocalHost.datamart_Northwind;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Stage_Northwind1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{72D19ADF-65EE-4CC2-B198-33DAF7F2C752}"
+      DTS:ObjectName="LocalHost.Stage_Northwind1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Stage_Northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-02_Datamar_dim_Empleado-{72D19ADF-65EE-4CC2-B198-33DAF7F2C752}LocalHost.Stage_Northwind1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Cargar Dim Empleado"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0B065B4D-0BDA-49E6-BC82-DFBBA6CBE1F9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cargar Dim Empleado"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cargar Dim Empleado\Dim Empleado"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Dim Empleado"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_empleado]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar Dim Empleado\Dim Empleado.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.datamart_Northwind]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.datamart_Northwind]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_Skey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].ExternalColumns[empleado_Skey]"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_Skey]"
+                      name="empleado_Skey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_codigoBkey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].ExternalColumns[empleado_codigoBkey]"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_codigoBkey]"
+                      name="empleado_codigoBkey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_nombre_completo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].ExternalColumns[empleado_nombre_completo]"
+                      length="100"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_nombre_completo]"
+                      name="empleado_nombre_completo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].ExternalColumns[empleado_Skey]"
+                      dataType="i4"
+                      name="empleado_Skey" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].ExternalColumns[empleado_codigoBkey]"
+                      dataType="i4"
+                      name="empleado_codigoBkey" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].ExternalColumns[empleado_nombre_completo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="empleado_nombre_completo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[empleado_Skey]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[empleado_Skey]"
+                      name="empleado_Skey" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[empleado_codigoBkey]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[empleado_codigoBkey]"
+                      name="empleado_codigoBkey" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[empleado_nombre_completo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[empleado_nombre_completo]"
+                      name="empleado_nombre_completo" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim Empleado\Entrar Empleados nuevos"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Entrar Empleados nuevos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Inputs[Conditional Split Input].Columns[empleado_codigoBkey]"
+                      cachedDataType="i4"
+                      cachedName="empleado_codigoBkey"
+                      lineageId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[empleado_codigoBkey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Outputs[Empleados Nuevos]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Empleados Nuevos"
+                  synchronousInputId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[empleado_codigoBkey]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(empleado_codigoBkey)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim Empleado\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_empleado]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar Dim Empleado\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.datamart_Northwind]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.datamart_Northwind]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[empleadoid]"
+                      cachedDataType="i4"
+                      cachedName="empleadoid"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[empleado_codigoBkey]"
+                      lineageId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[empleadoid]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NombreCompleto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="31"
+                      cachedName="NombreCompleto"
+                      externalMetadataColumnId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[empleado_nombre_completo]"
+                      lineageId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[NombreCompleto]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[empleado_Skey]"
+                      dataType="i4"
+                      name="empleado_Skey" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[empleado_codigoBkey]"
+                      dataType="i4"
+                      name="empleado_codigoBkey" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[empleado_nombre_completo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="empleado_nombre_completo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Ordenar  Satge Empleado"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Inputs[Sort Input].Columns[empleadoid]"
+                      cachedDataType="i4"
+                      cachedName="empleadoid"
+                      lineageId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].Columns[empleadoid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Inputs[Sort Input].Columns[NombreCompleto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="31"
+                      cachedName="NombreCompleto"
+                      lineageId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].Columns[NombreCompleto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Outputs[Sort Output].Columns[empleadoid]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Outputs[Sort Output].Columns[empleadoid]"
+                      name="empleadoid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].Columns[empleadoid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Outputs[Sort Output].Columns[NombreCompleto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="31"
+                      lineageId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Outputs[Sort Output].Columns[NombreCompleto]"
+                      name="NombreCompleto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].Columns[NombreCompleto]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim Empleado\ordenar Dim Empleado"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="ordenar Dim Empleado"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Inputs[Sort Input].Columns[empleado_Skey]"
+                      cachedDataType="i4"
+                      cachedName="empleado_Skey"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_Skey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Inputs[Sort Input].Columns[empleado_codigoBkey]"
+                      cachedDataType="i4"
+                      cachedName="empleado_codigoBkey"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_codigoBkey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Inputs[Sort Input].Columns[empleado_nombre_completo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="empleado_nombre_completo"
+                      lineageId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_nombre_completo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output].Columns[empleado_Skey]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output].Columns[empleado_Skey]"
+                      name="empleado_Skey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_Skey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output].Columns[empleado_codigoBkey]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output].Columns[empleado_codigoBkey]"
+                      name="empleado_codigoBkey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_codigoBkey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output].Columns[empleado_nombre_completo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output].Columns[empleado_nombre_completo]"
+                      name="empleado_nombre_completo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output].Columns[empleado_nombre_completo]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim Empleado\Satge Empleado"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Satge Empleado"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
+se.empleadoid,
+CONCAT(se.nombre,' ', se.apellido) as NombreCompleto 
+from Stage_Northwind.dbo.empleado as se</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cargar Dim Empleado\Satge Empleado.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Stage_Northwind1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Stage_Northwind1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].Columns[empleadoid]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].ExternalColumns[empleadoid]"
+                      lineageId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].Columns[empleadoid]"
+                      name="empleadoid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].Columns[NombreCompleto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].ExternalColumns[NombreCompleto]"
+                      length="31"
+                      lineageId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].Columns[NombreCompleto]"
+                      name="NombreCompleto"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].ExternalColumns[empleadoid]"
+                      dataType="i4"
+                      name="empleadoid" />
+                    <externalMetadataColumn
+                      refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output].ExternalColumns[NombreCompleto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="31"
+                      name="NombreCompleto" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Error Output].Columns[empleadoid]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Error Output].Columns[empleadoid]"
+                      name="empleadoid" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Error Output].Columns[NombreCompleto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="31"
+                      lineageId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Error Output].Columns[NombreCompleto]"
+                      name="NombreCompleto" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Stage Empleado y Dim Empleado"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Left Input].Columns[empleadoid]"
+                      cachedDataType="i4"
+                      cachedName="empleadoid"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Outputs[Sort Output].Columns[empleadoid]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Left Input].Columns[NombreCompleto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="31"
+                      cachedName="NombreCompleto"
+                      lineageId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Outputs[Sort Output].Columns[NombreCompleto]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Right Input].Columns[empleado_codigoBkey]"
+                      cachedDataType="i4"
+                      cachedName="empleado_codigoBkey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output].Columns[empleado_codigoBkey]" />
+                    <inputColumn
+                      refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Right Input].Columns[empleado_nombre_completo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="empleado_nombre_completo"
+                      lineageId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output].Columns[empleado_nombre_completo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[empleadoid]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[empleadoid]"
+                      name="empleadoid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Left Input].Columns[empleadoid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[NombreCompleto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="31"
+                      lineageId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[NombreCompleto]"
+                      name="NombreCompleto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Left Input].Columns[NombreCompleto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[empleado_codigoBkey]"
+                      dataType="i4"
+                      lineageId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[empleado_codigoBkey]"
+                      name="empleado_codigoBkey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Right Input].Columns[empleado_codigoBkey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[empleado_nombre_completo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output].Columns[empleado_nombre_completo]"
+                      name="empleado_nombre_completo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Right Input].Columns[empleado_nombre_completo]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cargar Dim Empleado.Paths[Empleados Nuevos]"
+              endId="Package\Cargar Dim Empleado\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Empleados Nuevos"
+              startId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Outputs[Empleados Nuevos]" />
+            <path
+              refId="Package\Cargar Dim Empleado.Paths[Merge Join Output]"
+              endId="Package\Cargar Dim Empleado\Entrar Empleados nuevos.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Cargar Dim Empleado.Paths[OLE DB Source Output]"
+              endId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Cargar Dim Empleado\Satge Empleado.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Cargar Dim Empleado.Paths[OLE DB Source Output1]"
+              endId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Cargar Dim Empleado\Dim Empleado.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Cargar Dim Empleado.Paths[Sort Output]"
+              endId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Cargar Dim Empleado\Ordenar  Satge Empleado.Outputs[Sort Output]" />
+            <path
+              refId="Package\Cargar Dim Empleado.Paths[Sort Output1]"
+              endId="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Cargar Dim Empleado\ordenar Dim Empleado.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Cargar Dim Empleado"
+          TopLeft="375.833312798706,218.399998481274" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Cargar Dim Empleado">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Cargar Dim Empleado\Satge Empleado"
+          TopLeft="92.4999949460231,84.0666660820775" />
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Cargar Dim Empleado\Dim Empleado"
+          TopLeft="305.833316623338,87.5333327246374" />
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\Cargar Dim Empleado\Ordenar  Satge Empleado"
+          TopLeft="119.444437918288,213.777776291194" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Cargar Dim Empleado\ordenar Dim Empleado"
+          TopLeft="345.370351500166,236.888887241593" />
+        <EdgeLayout
+          Id="Package\Cargar Dim Empleado.Paths[OLE DB Source Output]"
+          TopLeft="170.099994946023,125.666666082078">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.9444429722649,88.1111102091162"
+              Start="0,0"
+              End="48.9444429722649,80.6111102091162">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.0555551045581" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.0555551045581"
+                    Point2="0,44.0555551045581"
+                    Point3="4,44.0555551045581" />
+                  <mssgle:LineSegment
+                    End="44.9444429722649,44.0555551045581" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.9444429722649,44.0555551045581"
+                    Point2="48.9444429722649,44.0555551045581"
+                    Point3="48.9444429722649,48.0555551045581" />
+                  <mssgle:LineSegment
+                    End="48.9444429722649,80.6111102091162" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim Empleado.Paths[OLE DB Source Output1]"
+          TopLeft="379.033316623337,129.133332724637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.7370348768285,107.755554516956"
+              Start="0,0"
+              End="58.7370348768285,100.255554516956">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.8777772584778" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49.8777772584778"
+                    Point2="0,53.8777772584778"
+                    Point3="4,53.8777772584778" />
+                  <mssgle:LineSegment
+                    End="54.7370348768285,53.8777772584778" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.7370348768285,53.8777772584778"
+                    Point2="58.7370348768285,53.8777772584778"
+                    Point3="58.7370348768285,57.8777772584778" />
+                  <mssgle:LineSegment
+                    End="58.7370348768285,100.255554516956" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="234.4,41.6"
+          Id="Package\Cargar Dim Empleado\Stage Empleado y Dim Empleado"
+          TopLeft="267.592577971979,343.77777538719" />
+        <EdgeLayout
+          Id="Package\Cargar Dim Empleado.Paths[Sort Output]"
+          TopLeft="219.044437918288,255.377776291194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="165.748140053691,88.3999990959962"
+              Start="0,0"
+              End="165.748140053691,80.8999990959962">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.1999995479981" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.1999995479981"
+                    Point2="0,44.1999995479981"
+                    Point3="4,44.1999995479981" />
+                  <mssgle:LineSegment
+                    End="161.748140053691,44.1999995479981" />
+                  <mssgle:CubicBezierSegment
+                    Point1="161.748140053691,44.1999995479981"
+                    Point2="165.748140053691,44.1999995479981"
+                    Point3="165.748140053691,48.1999995479981" />
+                  <mssgle:LineSegment
+                    End="165.748140053691,80.8999990959962" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Cargar Dim Empleado.Paths[Sort Output1]"
+          TopLeft="437.770351500166,278.488887241593">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.2444401948542,65.2888881455968"
+              Start="0,0"
+              End="-15.2444401948542,57.7888881455968">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.9077509694777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.9077509694777"
+                    Point2="0,38.9077509694777"
+                    Point3="-4,38.9077509694777" />
+                  <mssgle:LineSegment
+                    End="-11.2444401948542,38.9077509694777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.2444401948542,38.9077509694777"
+                    Point2="-15.2444401948542,38.9077509694777"
+                    Point3="-15.2444401948542,42.9077509694777" />
+                  <mssgle:LineSegment
+                    End="-15.2444401948542,57.7888881455968" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Cargar Dim Empleado\Entrar Empleados nuevos"
+          TopLeft="321.296278741441,475.70370039572" />
+        <EdgeLayout
+          Id="Package\Cargar Dim Empleado.Paths[Merge Join Output]"
+          TopLeft="384.792577971979,385.37777538719">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.3037007694629,90.3259250085296"
+              Start="0,0"
+              End="35.3037007694629,82.8259250085296">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.1629625042648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.1629625042648"
+                    Point2="0,45.1629625042648"
+                    Point3="4,45.1629625042648" />
+                  <mssgle:LineSegment
+                    End="31.3037007694629,45.1629625042648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.3037007694629,45.1629625042648"
+                    Point2="35.3037007694629,45.1629625042648"
+                    Point3="35.3037007694629,49.1629625042648" />
+                  <mssgle:LineSegment
+                    End="35.3037007694629,82.8259250085296" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Cargar Dim Empleado\OLE DB Destination"
+          TopLeft="291.666650730703,557.185181421851" />
+        <EdgeLayout
+          Id="Package\Cargar Dim Empleado.Paths[Empleados Nuevos]"
+          TopLeft="420.096278741441,517.30370039572">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-42.8296280107382,39.8814810261314"
+              Start="0,0"
+              End="-42.8296280107382,32.3814810261314">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.9407405130657" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.9407405130657"
+                    Point2="0,19.9407405130657"
+                    Point3="-4,19.9407405130657" />
+                  <mssgle:LineSegment
+                    End="-38.8296280107382,19.9407405130657" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-38.8296280107382,19.9407405130657"
+                    Point2="-42.8296280107382,19.9407405130657"
+                    Point3="-42.8296280107382,23.9407405130657" />
+                  <mssgle:LineSegment
+                    End="-42.8296280107382,32.3814810261314" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-63.5873921303691,24.9407405130657,84.34515625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim Empleado\Satge Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim Empleado\Dim Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cargar Dim Empleado\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

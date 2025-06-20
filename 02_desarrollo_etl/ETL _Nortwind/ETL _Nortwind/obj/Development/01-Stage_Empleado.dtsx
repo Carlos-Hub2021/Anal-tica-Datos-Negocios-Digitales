@@ -1,0 +1,1593 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/20/2025 2:33:46 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALBERTO"
+  DTS:CreatorName="ALBERTO\alina"
+  DTS:DTSID="{AB4FFC0E-C7D5-4911-96BB-28866A9B6688}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="01-Stage_Empleado"
+  DTS:PackageType="5"
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{6DDC865E-791D-4902-B169-F73A2092882E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Northwind]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1AF7E875-8990-4383-9F08-3A062CCDD9FD}"
+      DTS:ObjectName="LocalHost.Northwind">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-01-Stage_Empleado-{1AF7E875-8990-4383-9F08-3A062CCDD9FD}LocalHost.Northwind;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Northwind1]"
+      DTS:CreationName="ADO.NET:System.Data.OleDb.OleDbConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{F8BC95B3-540C-4985-A1DA-79A9535CD8C4}"
+      DTS:ObjectName="LocalHost.Northwind1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Stage_Northwind]"
+      DTS:CreationName="ADO.NET:System.Data.OleDb.OleDbConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{2158A23F-0A70-401E-97AB-A5E5E10DD2A3}"
+      DTS:ObjectName="LocalHost.Stage_Northwind">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Stage_Northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Stage_Northwind1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{30A1E3D1-449D-45AB-A179-6D8EDCD63D92}"
+      DTS:ObjectName="LocalHost.Stage_Northwind1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Stage_Northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-01-Stage_Empleado-{30A1E3D1-449D-45AB-A179-6D8EDCD63D92}LocalHost.Stage_Northwind1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CCARGA-sTAGE_EMPLEADO"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5EB96033-328C-41E8-89B9-10704E4A50F9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CCARGA-sTAGE_EMPLEADO"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Inputs[Conditional Split Input].Columns[empleadoid]"
+                      cachedDataType="i4"
+                      cachedName="empleadoid"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[empleadoid]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Outputs[EMPLEADOS_NUEVOS]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="EMPLEADOS_NUEVOS"
+                  synchronousInputId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[empleadoid]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(empleadoid)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Inputs[Data Conversion Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="FirstName"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Inputs[Data Conversion Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[LastName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FirstName]"
+                      name="Copy of FirstName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[FirstName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of LastName]"
+                      name="Copy of LastName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[LastName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="Destino de ADO NET"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">[dbo].[empleado]</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Stage_Northwind]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Stage_Northwind]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Copy of FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Copy of FirstName"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[nombre]"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[Copy of FirstName]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Copy of LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Copy of LastName"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[apellido]"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[Copy of LastName]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[fecha_contratacion]"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[empleadoid]"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[EmployeeID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[empleadoid]"
+                      dataType="i4"
+                      name="empleadoid" />
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="10"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      name="apellido" />
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[fecha_contratacion]"
+                      dataType="dbTimeStamp"
+                      name="fecha_contratacion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="eMPLOTESS_NORWIND"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+EmployeeID,
+FirstName,
+LastName,
+HireDate
+FROM Northwind.DBO.Employees</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">[dbo].[Employees]</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind1]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].ExternalColumns[EmployeeID]"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].ExternalColumns[FirstName]"
+                      length="10"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].ExternalColumns[HireDate]"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="EMPLOYEE_Stage"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">[dbo].[empleado]</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Stage_Northwind]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Stage_Northwind]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[empleadoid]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].ExternalColumns[empleadoid]"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[empleadoid]"
+                      name="empleadoid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].ExternalColumns[nombre]"
+                      length="10"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[apellido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].ExternalColumns[apellido]"
+                      length="20"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[apellido]"
+                      name="apellido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[fecha_contratacion]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].ExternalColumns[fecha_contratacion]"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[fecha_contratacion]"
+                      name="fecha_contratacion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].ExternalColumns[empleadoid]"
+                      dataType="i4"
+                      name="empleadoid" />
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="10"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].ExternalColumns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      name="apellido" />
+                    <externalMetadataColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].ExternalColumns[fecha_contratacion]"
+                      dataType="dbTimeStamp"
+                      name="fecha_contratacion" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[empleadoid]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[empleadoid]"
+                      name="empleadoid" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[nombre]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[apellido]"
+                      name="apellido" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[fecha_contratacion]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[fecha_contratacion]"
+                      name="fecha_contratacion" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input].Columns[Copy of FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Copy of FirstName"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FirstName]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input].Columns[Copy of LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Copy of LastName"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of LastName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input].Columns[empleadoid]"
+                      cachedDataType="i4"
+                      cachedName="empleadoid"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[empleadoid]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input].Columns[apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="apellido"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[apellido]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="nombre"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input].Columns[fecha_contratacion]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha_contratacion"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[fecha_contratacion]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input].Columns[EmployeeID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[HireDate]"
+                      name="HireDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input].Columns[HireDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[Copy of FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[Copy of FirstName]"
+                      name="Copy of FirstName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input].Columns[Copy of FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[Copy of LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[Copy of LastName]"
+                      name="Copy of LastName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input].Columns[Copy of LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[apellido]"
+                      name="apellido">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input].Columns[apellido]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[nombre]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[nombre]"
+                      name="nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input].Columns[nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[empleadoid]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[empleadoid]"
+                      name="empleadoid">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input].Columns[empleadoid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[fecha_contratacion]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output].Columns[fecha_contratacion]"
+                      name="fecha_contratacion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input].Columns[fecha_contratacion]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="ORDENAR_EMPEADO"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Inputs[Sort Input].Columns[empleadoid]"
+                      cachedDataType="i4"
+                      cachedName="empleadoid"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[empleadoid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Inputs[Sort Input].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="nombre"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[nombre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Inputs[Sort Input].Columns[apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="apellido"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[apellido]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Inputs[Sort Input].Columns[fecha_contratacion]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha_contratacion"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[fecha_contratacion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[empleadoid]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[empleadoid]"
+                      name="empleadoid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[empleadoid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[nombre]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[nombre]"
+                      name="nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[apellido]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[apellido]"
+                      name="apellido">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[apellido]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[fecha_contratacion]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output].Columns[fecha_contratacion]"
+                      name="fecha_contratacion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET].Columns[fecha_contratacion]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="ORDENAR_EMPLOYEES"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Inputs[Sort Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Inputs[Sort Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="FirstName"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[FirstName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Inputs[Sort Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[LastName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Inputs[Sort Input].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[HireDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[EmployeeID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[FirstName]"
+                      name="FirstName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[LastName]"
+                      name="LastName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output].Columns[HireDate]"
+                      name="HireDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET].Columns[HireDate]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\CCARGA-sTAGE_EMPLEADO.Paths[Data Conversion Output]"
+              endId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Left Input]"
+              name="Data Conversion Output"
+              startId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\CCARGA-sTAGE_EMPLEADO.Paths[EMPLEADOS_NUEVOS]"
+              endId="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+              name="EMPLEADOS_NUEVOS"
+              startId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Outputs[EMPLEADOS_NUEVOS]" />
+            <path
+              refId="Package\CCARGA-sTAGE_EMPLEADO.Paths[Merge Join Output]"
+              endId="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\CCARGA-sTAGE_EMPLEADO.Paths[Salida de origen de ADO NET]"
+              endId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\CCARGA-sTAGE_EMPLEADO.Paths[Salida de origen de ADO NET1]"
+              endId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\CCARGA-sTAGE_EMPLEADO.Paths[Sort Output]"
+              endId="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion.Inputs[Data Conversion Input]"
+              name="Sort Output"
+              startId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES.Outputs[Sort Output]" />
+            <path
+              refId="Package\CCARGA-sTAGE_EMPLEADO.Paths[Sort Output1]"
+              endId="Package\CCARGA-sTAGE_EMPLEADO\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="223.2,41.6"
+          Id="Package\CCARGA-sTAGE_EMPLEADO"
+          TopLeft="340.833314711022,204.533331911034" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\CCARGA-sTAGE_EMPLEADO">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPLOYEES"
+          TopLeft="289.166650867297,315.466664472951" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\CCARGA-sTAGE_EMPLEADO\Data Conversion"
+          TopLeft="309.999983062347,480.066664924953" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND"
+          TopLeft="295.833317169713,151.666665611996" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET"
+          TopLeft="530.83330432988,757.399996402065" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\CCARGA-sTAGE_EMPLEADO\Merge Join"
+          TopLeft="554.999969676138,534.466663550867" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\CCARGA-sTAGE_EMPLEADO\ORDENAR_EMPEADO"
+          TopLeft="604.166633656457,345.79999759535" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage"
+          TopLeft="646.66663133436,147.333332308796" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\CCARGA-sTAGE_EMPLEADO\Conditional Split"
+          TopLeft="532.499970905484,632.066663261586" />
+        <EdgeLayout
+          Id="Package\CCARGA-sTAGE_EMPLEADO.Paths[Sort Output]"
+          TopLeft="388.583316964822,357.066664472951">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,123.000000452002"
+              Start="0,0"
+              End="0,115.500000452002">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,115.500000452002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CCARGA-sTAGE_EMPLEADO.Paths[Salida de origen de ADO NET1]"
+          TopLeft="731.066631334359,188.933332308796">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-32.8999976779027,156.866665286554"
+              Start="0,0"
+              End="-32.8999976779027,149.366665286554">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.4333326432772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74.4333326432772"
+                    Point2="0,78.4333326432772"
+                    Point3="-4,78.4333326432772" />
+                  <mssgle:LineSegment
+                    End="-28.8999976779027,78.4333326432772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-28.8999976779027,78.4333326432772"
+                    Point2="-32.8999976779027,78.4333326432772"
+                    Point3="-32.8999976779027,82.4333326432772" />
+                  <mssgle:LineSegment
+                    End="-32.8999976779027,149.366665286554" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CCARGA-sTAGE_EMPLEADO.Paths[Salida de origen de ADO NET]"
+          TopLeft="391.899984018505,193.266665611996">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,122.199998860955"
+              Start="0,0"
+              End="0,114.699998860955">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,114.699998860955" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CCARGA-sTAGE_EMPLEADO.Paths[Merge Join Output]"
+          TopLeft="619.799969676138,576.066663550867">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.4999987706543,55.9999997107191"
+              Start="0,0"
+              End="-10.4999987706543,48.4999997107191">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9999998553595" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.9999998553595"
+                    Point2="0,27.9999998553595"
+                    Point3="-4,27.9999998553595" />
+                  <mssgle:LineSegment
+                    End="-6.49999877065432,27.9999998553595" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.49999877065432,27.9999998553595"
+                    Point2="-10.4999987706543,27.9999998553595"
+                    Point3="-10.4999987706543,31.9999998553595" />
+                  <mssgle:LineSegment
+                    End="-10.4999987706543,48.4999997107191" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CCARGA-sTAGE_EMPLEADO.Paths[Data Conversion Output]"
+          TopLeft="465.999983062347,500.866664924953">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88.999986613791,54.399998625914"
+              Start="0,0"
+              End="81.499986613791,54.399998625914">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="40.4999933068955,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.4999933068955,0"
+                    Point2="44.4999933068955,0"
+                    Point3="44.4999933068955,4" />
+                  <mssgle:LineSegment
+                    End="44.4999933068955,50.399998625914" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.4999933068955,50.399998625914"
+                    Point2="44.4999933068955,54.399998625914"
+                    Point3="48.4999933068955,54.399998625914" />
+                  <mssgle:LineSegment
+                    End="81.499986613791,54.399998625914" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CCARGA-sTAGE_EMPLEADO.Paths[Sort Output1]"
+          TopLeft="698.166633656457,387.39999759535">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-78.366663980319,147.066665955517"
+              Start="0,0"
+              End="-78.366663980319,139.566665955517">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5333329777585" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,69.5333329777585"
+                    Point2="0,73.5333329777585"
+                    Point3="-4,73.5333329777585" />
+                  <mssgle:LineSegment
+                    End="-74.366663980319,73.5333329777585" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.366663980319,73.5333329777585"
+                    Point2="-78.366663980319,73.5333329777585"
+                    Point3="-78.366663980319,77.5333329777585" />
+                  <mssgle:LineSegment
+                    End="-78.366663980319,139.566665955517" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CCARGA-sTAGE_EMPLEADO.Paths[EMPLEADOS_NUEVOS]"
+          TopLeft="609.299970905484,673.666663261586">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.93333342439598,83.733333140479"
+              Start="0,0"
+              End="9.93333342439598,76.233333140479">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.8666665702395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.8666665702395"
+                    Point2="0,41.8666665702395"
+                    Point3="4,41.8666665702395" />
+                  <mssgle:LineSegment
+                    End="5.93333342439598,41.8666665702395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.93333342439598,41.8666665702395"
+                    Point2="9.93333342439598,41.8666665702395"
+                    Point3="9.93333342439598,45.8666665702395" />
+                  <mssgle:LineSegment
+                    End="9.93333342439598,76.233333140479" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-44.425813756552,46.8666665702395,98.7849609375,10.88671875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CCARGA-sTAGE_EMPLEADO\eMPLOTESS_NORWIND">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CCARGA-sTAGE_EMPLEADO\Destino de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CCARGA-sTAGE_EMPLEADO\EMPLOYEE_Stage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

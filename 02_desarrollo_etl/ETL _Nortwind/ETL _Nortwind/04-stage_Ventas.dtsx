@@ -1,0 +1,2481 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/22/2025 4:27:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALBERTO"
+  DTS:CreatorName="ALBERTO\alina"
+  DTS:DTSID="{2DF15B19-8E21-4B43-A31F-966F37B4503C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{C599897F-D454-4768-A698-EB62A2285FD3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Northwind]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7B41BCE9-500B-4B26-AC03-76E3C826E045}"
+      DTS:ObjectName="LocalHost.Northwind">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{7B41BCE9-500B-4B26-AC03-76E3C826E045}LocalHost.Northwind;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Stage_Northwind1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3F4A778C-2E05-47C4-BEA8-74BEFEBC88EC}"
+      DTS:ObjectName="LocalHost.Stage_Northwind1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Stage_Northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{3F4A778C-2E05-47C4-BEA8-74BEFEBC88EC}LocalHost.Stage_Northwind1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Stage_Northwind1 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{48785FED-8CE9-43C0-AEBA-8275D29B219B}"
+      DTS:ObjectName="LocalHost.Stage_Northwind1 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Stage_Northwind;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{48785FED-8CE9-43C0-AEBA-8275D29B219B}LocalHost.Stage_Northwind1 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga Stage Ventas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1CFF5B60-7C5E-4B26-98EC-7C5799DB34EC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Stage Ventas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Stage Ventas\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga Stage Ventas\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Inputs[Data Conversion Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Inputs[Data Conversion Input].Columns[Quantity]"
+                      cachedDataType="i2"
+                      cachedName="Quantity"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Inputs[Data Conversion Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Inputs[Data Conversion Input].Columns[Discount]"
+                      cachedDataType="r4"
+                      cachedName="Discount"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Discount]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Carga Stage Ventas\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_CHAR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_CHAR]"
+                      name="CustomerID_CHAR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[CustomerID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[Quantity_INT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[Quantity_INT]"
+                      name="Quantity_INT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Quantity]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[UnitPrice_DECIMAL]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[UnitPrice_DECIMAL]"
+                      name="UnitPrice_DECIMAL"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[UnitPrice]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[Discount_DECIMAL]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[Discount_DECIMAL]"
+                      name="Discount_DECIMAL"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Discount]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Carga Stage Ventas\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Stage Ventas\Fitrar ventas nuevas"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Fitrar ventas nuevas"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Inputs[Conditional Split Input].Columns[clienteid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="clienteid"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[clienteid]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Inputs[Conditional Split Input].Columns[empleado_codigo]"
+                      cachedDataType="i4"
+                      cachedName="empleado_codigo"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[empleado_codigo]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Inputs[Conditional Split Input].Columns[producto_codigo]"
+                      cachedDataType="i4"
+                      cachedName="producto_codigo"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[producto_codigo]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Outputs[Ventas Nuevas]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Ventas Nuevas"
+                  synchronousInputId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[clienteid]}) || [ISNULL](#{Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[empleado_codigo]}) || [ISNULL](#{Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[producto_codigo]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(clienteid) || ISNULL(empleado_codigo) || ISNULL(producto_codigo)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Stage Ventas\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[CustomerID_CHAR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CustomerID_CHAR"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[CustomerID_CHAR]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[Quantity_INT]"
+                      cachedDataType="i4"
+                      cachedName="Quantity_INT"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Quantity_INT]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[UnitPrice_DECIMAL]"
+                      cachedDataType="numeric"
+                      cachedName="UnitPrice_DECIMAL"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[UnitPrice_DECIMAL]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[Discount_DECIMAL]"
+                      cachedDataType="numeric"
+                      cachedName="Discount_DECIMAL"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Discount_DECIMAL]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[Monto]"
+                      cachedDataType="r4"
+                      cachedName="Monto"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Monto]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[clienteid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="clienteid"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[clienteid]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[empleado_codigo]"
+                      cachedDataType="i4"
+                      cachedName="empleado_codigo"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[empleado_codigo]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[producto_codigo]"
+                      cachedDataType="i4"
+                      cachedName="producto_codigo"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[producto_codigo]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_order]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ventas_order"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_order]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_monto]"
+                      cachedDataType="numeric"
+                      cachedName="ventas_monto"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_monto]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_unidades]"
+                      cachedDataType="i4"
+                      cachedName="ventas_unidades"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_unidades]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_precio_unitario]"
+                      cachedDataType="numeric"
+                      cachedName="ventas_precio_unitario"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_precio_unitario]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_descuento]"
+                      cachedDataType="numeric"
+                      cachedName="ventas_descuento"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_descuento]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[CustomerID_CHAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[CustomerID_CHAR]"
+                      name="CustomerID_CHAR">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[CustomerID_CHAR]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[EmployeeID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ProductID]"
+                      name="ProductID"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[ProductID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[OrderDate]"
+                      name="OrderDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[OrderDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[Quantity_INT]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[Quantity_INT]"
+                      name="Quantity_INT">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[Quantity_INT]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice_DECIMAL]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice_DECIMAL]"
+                      name="UnitPrice_DECIMAL"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[UnitPrice_DECIMAL]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[Discount_DECIMAL]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[Discount_DECIMAL]"
+                      name="Discount_DECIMAL"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[Discount_DECIMAL]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[Monto]"
+                      dataType="r4"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[Monto]"
+                      name="Monto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input].Columns[Monto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[clienteid]"
+                      name="clienteid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[clienteid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[empleado_codigo]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[empleado_codigo]"
+                      name="empleado_codigo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[empleado_codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[producto_codigo]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[producto_codigo]"
+                      name="producto_codigo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[producto_codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_order]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_order]"
+                      name="ventas_order">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_order]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_monto]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_monto]"
+                      name="ventas_monto"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_monto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_unidades]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_unidades]"
+                      name="ventas_unidades">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_unidades]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_precio_unitario]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_precio_unitario]"
+                      name="ventas_precio_unitario"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_precio_unitario]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_descuento]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ventas_descuento]"
+                      name="ventas_descuento"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input].Columns[ventas_descuento]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Stage Ventas\Northwind ordenes"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Northwind ordenes"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
+c.CustomerID, 
+e.EmployeeID,
+p.ProductID,
+o.OrderDate,
+(od.Quantity * od.UnitPrice *( 1 - od.Discount)) as 'Monto',
+od.Quantity,
+od.UnitPrice,
+od.Discount
+
+from Northwind.dbo.Customers as c
+inner join Northwind.dbo.Orders as o
+on c.CustomerID =o.CustomerID
+inner join Northwind.dbo.Employees as e
+on e.EmployeeID = o.EmployeeID
+inner join Northwind.dbo.[Order Details] as od
+on o.OrderID = od.OrderID
+inner join Northwind.dbo.Products as p
+on od.ProductID = p.ProductID;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Stage Ventas\Northwind ordenes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Northwind]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Northwind]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Monto]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[Monto]"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Monto]"
+                      name="Monto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Discount]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Discount]"
+                      name="Discount"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[Monto]"
+                      dataType="r4"
+                      name="Monto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i2"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      dataType="r4"
+                      name="Discount" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[Monto]"
+                      dataType="r4"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[Monto]"
+                      name="Monto" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="i2"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      dataType="r4"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      name="Discount" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Stage Ventas\Ordenar Ordenes"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Ordenar Ordenes"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[CustomerID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[ProductID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[OrderDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[Monto]"
+                      cachedDataType="r4"
+                      cachedName="Monto"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Monto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[Quantity]"
+                      cachedDataType="i2"
+                      cachedName="Quantity"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Quantity]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[UnitPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[Discount]"
+                      cachedDataType="r4"
+                      cachedName="Discount"
+                      lineageId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Discount]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[CustomerID_CHAR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CustomerID_CHAR"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_CHAR]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[Quantity_INT]"
+                      cachedDataType="i4"
+                      cachedName="Quantity_INT"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[Quantity_INT]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[UnitPrice_DECIMAL]"
+                      cachedDataType="numeric"
+                      cachedName="UnitPrice_DECIMAL"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[UnitPrice_DECIMAL]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input].Columns[Discount_DECIMAL]"
+                      cachedDataType="numeric"
+                      cachedName="Discount_DECIMAL"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[Discount_DECIMAL]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[CustomerID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[EmployeeID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[ProductID]"
+                      name="ProductID"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[ProductID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[OrderDate]"
+                      name="OrderDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[OrderDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Monto]"
+                      dataType="r4"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Monto]"
+                      name="Monto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Monto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Quantity]"
+                      dataType="i2"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Quantity]"
+                      name="Quantity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Quantity]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[UnitPrice]"
+                      name="UnitPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[UnitPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Discount]"
+                      dataType="r4"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Discount]"
+                      name="Discount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output].Columns[Discount]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[CustomerID_CHAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[CustomerID_CHAR]"
+                      name="CustomerID_CHAR">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[CustomerID_CHAR]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Quantity_INT]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Quantity_INT]"
+                      name="Quantity_INT">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[Quantity_INT]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[UnitPrice_DECIMAL]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[UnitPrice_DECIMAL]"
+                      name="UnitPrice_DECIMAL"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[UnitPrice_DECIMAL]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Discount_DECIMAL]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output].Columns[Discount_DECIMAL]"
+                      name="Discount_DECIMAL"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output].Columns[Discount_DECIMAL]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Stage Ventas\Ordenar Stage Ventas"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Ordenar Stage Ventas"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input].Columns[clienteid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="clienteid"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[clienteid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input].Columns[empleado_codigo]"
+                      cachedDataType="i4"
+                      cachedName="empleado_codigo"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[empleado_codigo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input].Columns[producto_codigo]"
+                      cachedDataType="i4"
+                      cachedName="producto_codigo"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[producto_codigo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input].Columns[ventas_order]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ventas_order"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_order]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input].Columns[ventas_monto]"
+                      cachedDataType="numeric"
+                      cachedName="ventas_monto"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_monto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input].Columns[ventas_unidades]"
+                      cachedDataType="i4"
+                      cachedName="ventas_unidades"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_unidades]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input].Columns[ventas_precio_unitario]"
+                      cachedDataType="numeric"
+                      cachedName="ventas_precio_unitario"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_precio_unitario]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input].Columns[ventas_descuento]"
+                      cachedDataType="numeric"
+                      cachedName="ventas_descuento"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_descuento]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[clienteid]"
+                      name="clienteid"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[clienteid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[empleado_codigo]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[empleado_codigo]"
+                      name="empleado_codigo"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[empleado_codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[producto_codigo]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[producto_codigo]"
+                      name="producto_codigo"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[producto_codigo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_order]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_order]"
+                      name="ventas_order">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_order]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_monto]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_monto]"
+                      name="ventas_monto"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_monto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_unidades]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_unidades]"
+                      name="ventas_unidades">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_unidades]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_precio_unitario]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_precio_unitario]"
+                      name="ventas_precio_unitario"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_precio_unitario]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_descuento]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output].Columns[ventas_descuento]"
+                      name="ventas_descuento"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_descuento]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Stage Ventas\Stage Ventas"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stage Ventas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ventas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Stage Ventas\Stage Ventas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Stage_Northwind1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Stage_Northwind1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[clienteid]"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[clienteid]"
+                      name="clienteid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[empleado_codigo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[empleado_codigo]"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[empleado_codigo]"
+                      name="empleado_codigo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[producto_codigo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[producto_codigo]"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[producto_codigo]"
+                      name="producto_codigo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_order]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_order]"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_order]"
+                      name="ventas_order"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_monto]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_monto]"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_monto]"
+                      name="ventas_monto"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_unidades]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_unidades]"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_unidades]"
+                      name="ventas_unidades"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_precio_unitario]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_precio_unitario]"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_precio_unitario]"
+                      name="ventas_precio_unitario"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_descuento]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_descuento]"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].Columns[ventas_descuento]"
+                      name="ventas_descuento"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="clienteid" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[empleado_codigo]"
+                      dataType="i4"
+                      name="empleado_codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[producto_codigo]"
+                      dataType="i4"
+                      name="producto_codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_order]"
+                      dataType="dbTimeStamp"
+                      name="ventas_order" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_monto]"
+                      dataType="numeric"
+                      name="ventas_monto"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_unidades]"
+                      dataType="i4"
+                      name="ventas_unidades" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_precio_unitario]"
+                      dataType="numeric"
+                      name="ventas_precio_unitario"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output].ExternalColumns[ventas_descuento]"
+                      dataType="numeric"
+                      name="ventas_descuento"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[clienteid]"
+                      name="clienteid" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[empleado_codigo]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[empleado_codigo]"
+                      name="empleado_codigo" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[producto_codigo]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[producto_codigo]"
+                      name="producto_codigo" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_order]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_order]"
+                      name="ventas_order" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_monto]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_monto]"
+                      name="ventas_monto"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_unidades]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_unidades]"
+                      name="ventas_unidades" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_precio_unitario]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_precio_unitario]"
+                      name="ventas_precio_unitario"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_descuento]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ventas_descuento]"
+                      name="ventas_descuento"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Stage Ventas\Tabla stage Ventas"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Tabla stage Ventas"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ventas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Stage Ventas\Tabla stage Ventas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Stage_Northwind1 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Stage_Northwind1 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].Columns[CustomerID_CHAR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CustomerID_CHAR"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[clienteid]"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[CustomerID_CHAR]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[empleado_codigo]"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[producto_codigo]"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_order]"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].Columns[Monto]"
+                      cachedDataType="r4"
+                      cachedName="Monto"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_monto]"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[Monto]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].Columns[Quantity_INT]"
+                      cachedDataType="i4"
+                      cachedName="Quantity_INT"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_unidades]"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[Quantity_INT]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].Columns[UnitPrice_DECIMAL]"
+                      cachedDataType="numeric"
+                      cachedName="UnitPrice_DECIMAL"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_precio_unitario]"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice_DECIMAL]" />
+                    <inputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].Columns[Discount_DECIMAL]"
+                      cachedDataType="numeric"
+                      cachedName="Discount_DECIMAL"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_descuento]"
+                      lineageId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output].Columns[Discount_DECIMAL]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[clienteid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="clienteid" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[empleado_codigo]"
+                      dataType="i4"
+                      name="empleado_codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[producto_codigo]"
+                      dataType="i4"
+                      name="producto_codigo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_order]"
+                      dataType="dbTimeStamp"
+                      name="ventas_order" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_monto]"
+                      dataType="numeric"
+                      name="ventas_monto"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_unidades]"
+                      dataType="i4"
+                      name="ventas_unidades" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_precio_unitario]"
+                      dataType="numeric"
+                      name="ventas_precio_unitario"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ventas_descuento]"
+                      dataType="numeric"
+                      name="ventas_descuento"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Stage Ventas\Tabla stage Ventas.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Tabla stage Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Stage Ventas\Tabla stage Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Stage Ventas\Tabla stage Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Stage Ventas.Paths[Data Conversion Output]"
+              endId="Package\Carga Stage Ventas\Ordenar Ordenes.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\Carga Stage Ventas\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Carga Stage Ventas.Paths[Merge Join Output]"
+              endId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Carga Stage Ventas\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Carga Stage Ventas.Paths[OLE DB Source Output]"
+              endId="Package\Carga Stage Ventas\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Carga Stage Ventas\Northwind ordenes.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Carga Stage Ventas.Paths[OLE DB Source Output1]"
+              endId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Carga Stage Ventas\Stage Ventas.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Carga Stage Ventas.Paths[Sort Output]"
+              endId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Carga Stage Ventas\Ordenar Ordenes.Outputs[Sort Output]" />
+            <path
+              refId="Package\Carga Stage Ventas.Paths[Sort Output1]"
+              endId="Package\Carga Stage Ventas\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Carga Stage Ventas\Ordenar Stage Ventas.Outputs[Sort Output]" />
+            <path
+              refId="Package\Carga Stage Ventas.Paths[Ventas Nuevas]"
+              endId="Package\Carga Stage Ventas\Tabla stage Ventas.Inputs[OLE DB Destination Input]"
+              name="Ventas Nuevas"
+              startId="Package\Carga Stage Ventas\Fitrar ventas nuevas.Outputs[Ventas Nuevas]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Carga Stage Ventas"
+          TopLeft="273.333318399059,246.133331621753" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga Stage Ventas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Carga Stage Ventas\Ordenar Ordenes"
+          TopLeft="332.499981833002,310.266664509111" />
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\Carga Stage Ventas\Ordenar Stage Ventas"
+          TopLeft="635.833298592933,243.533331639833" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Carga Stage Ventas\Tabla stage Ventas"
+          TopLeft="592.499967627229,639.666663297746" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Carga Stage Ventas\Northwind ordenes"
+          TopLeft="239.999986886979,55.4666662809584" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\Carga Stage Ventas\Fitrar ventas nuevas"
+          TopLeft="602.499967080853,547.266662899984" />
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\Carga Stage Ventas\Stage Ventas"
+          TopLeft="604.166633656457,71.066666172478" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Carga Stage Ventas\Merge Join"
+          TopLeft="659.999963939191,411.666663803988" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Carga Stage Ventas\Data Conversion"
+          TopLeft="244.999986613791,178.533332091835" />
+        <EdgeLayout
+          Id="Package\Carga Stage Ventas.Paths[Ventas Nuevas]"
+          TopLeft="688.899967080853,588.866662899984">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.3999994536241,50.8000003977617"
+              Start="0,0"
+              End="-12.3999994536241,43.3000003977617">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.4000001988808" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.4000001988808"
+                    Point2="0,25.4000001988808"
+                    Point3="-4,25.4000001988808" />
+                  <mssgle:LineSegment
+                    End="-8.3999994536241,25.4000001988808" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.3999994536241,25.4000001988808"
+                    Point2="-12.3999994536241,25.4000001988808"
+                    Point3="-12.3999994536241,29.4000001988808" />
+                  <mssgle:LineSegment
+                    End="-12.3999994536241,43.3000003977617" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-39.7207614455621,30.4000001988808,67.0415234375,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Stage Ventas.Paths[Sort Output1]"
+          TopLeft="726.633298592933,285.133331639833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.433332012925,126.533332164155"
+              Start="0,0"
+              End="18.433332012925,119.033332164155">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.9941456485115" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,70.9941456485115"
+                    Point2="0,74.9941456485115"
+                    Point3="4,74.9941456485115" />
+                  <mssgle:LineSegment
+                    End="14.433332012925,74.9941456485115" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.433332012925,74.9941456485115"
+                    Point2="18.433332012925,74.9941456485115"
+                    Point3="18.433332012925,78.9941456485115" />
+                  <mssgle:LineSegment
+                    End="18.433332012925,119.033332164155" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Stage Ventas.Paths[Sort Output]"
+          TopLeft="412.099981833002,351.866664509111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="312.69998210619,59.799999294877"
+              Start="0,0"
+              End="312.69998210619,52.299999294877">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.8999996474385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.8999996474385"
+                    Point2="0,29.8999996474385"
+                    Point3="4,29.8999996474385" />
+                  <mssgle:LineSegment
+                    End="308.69998210619,29.8999996474385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="308.69998210619,29.8999996474385"
+                    Point2="312.69998210619,29.8999996474385"
+                    Point3="312.69998210619,33.8999996474385" />
+                  <mssgle:LineSegment
+                    End="312.69998210619,52.299999294877" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Stage Ventas.Paths[OLE DB Source Output1]"
+          TopLeft="674.566633656457,112.666666172478">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52.0666649364762,130.866665467355"
+              Start="0,0"
+              End="52.0666649364762,123.366665467355">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.4333327336775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.4333327336775"
+                    Point2="0,65.4333327336775"
+                    Point3="4,65.4333327336775" />
+                  <mssgle:LineSegment
+                    End="48.0666649364762,65.4333327336775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.0666649364762,65.4333327336775"
+                    Point2="52.0666649364762,65.4333327336775"
+                    Point3="52.0666649364762,69.4333327336775" />
+                  <mssgle:LineSegment
+                    End="52.0666649364762,123.366665467355" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Stage Ventas.Paths[OLE DB Source Output]"
+          TopLeft="322.899986750385,97.0666662809584">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81.4666658108765"
+              Start="0,0"
+              End="0,73.9666658108765">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.9666658108765" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Stage Ventas.Paths[Merge Join Output]"
+          TopLeft="724.799963939191,453.266663803988">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-35.8999968583386,93.9999990959963"
+              Start="0,0"
+              End="-35.8999968583386,86.4999990959963">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.9999995479982" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.9999995479982"
+                    Point2="0,46.9999995479982"
+                    Point3="-4,46.9999995479982" />
+                  <mssgle:LineSegment
+                    End="-31.8999968583386,46.9999995479982" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-31.8999968583386,46.9999995479982"
+                    Point2="-35.8999968583386,46.9999995479982"
+                    Point3="-35.8999968583386,50.9999995479982" />
+                  <mssgle:LineSegment
+                    End="-35.8999968583386,86.4999990959963" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Stage Ventas.Paths[Data Conversion Output]"
+          TopLeft="322.999986613791,220.133332091835">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89.0999952192108,90.1333324172761"
+              Start="0,0"
+              End="89.0999952192108,82.6333324172761">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.066666208638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.066666208638"
+                    Point2="0,45.066666208638"
+                    Point3="4,45.066666208638" />
+                  <mssgle:LineSegment
+                    End="85.0999952192108,45.066666208638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="85.0999952192108,45.066666208638"
+                    Point2="89.0999952192108,45.066666208638"
+                    Point3="89.0999952192108,49.066666208638" />
+                  <mssgle:LineSegment
+                    End="89.0999952192108,82.6333324172761" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Stage Ventas\Tabla stage Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Stage Ventas\Northwind ordenes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Stage Ventas\Stage Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

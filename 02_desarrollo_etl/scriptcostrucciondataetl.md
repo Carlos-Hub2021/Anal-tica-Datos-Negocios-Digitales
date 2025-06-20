@@ -1,3 +1,5 @@
+	```sql
+	
 	-- create la base de datos Stage_Northwind
 	create database Stage_Northwind
 
@@ -129,3 +131,5 @@ constraint pk_factVentas_dimtimpo
 foreign key (timpo_Skey)
 references dim_tiempo(timpo_Skey)
 );
+
+```
